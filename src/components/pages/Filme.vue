@@ -57,10 +57,10 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col" style="width: 30%">Título</th>
+            <th scope="col" style="width: 20%">Título</th>
             <th scope="col" style="width: 50%">Descrição</th>
             <th scope="col" style="width: 10%">Duração</th>
-            <th scope="col" style="width: 10%">Operações</th>
+            <th scope="col" style="width: 20%">Operações</th>
           </tr>
         </thead>
         <tbody>
@@ -68,7 +68,7 @@
             <td :title="filme.titulo">{{ filme.titulo }}</td>
             <td :title="filme.descricao">{{ filme.descricao }}</td>
             <td :title="filme.duracao">{{ filme.duracao }}</td>
-            <td>
+            <td style="overflow: visible">
               <i
                 class="fa fa-edit"
                 title="Editar filme"
@@ -178,6 +178,7 @@ export default {
     validarFormulario() {
       if (
         this.filme.duracao == null ||
+        this.filme.duracao == "" ||
         this.filme.titulo == null ||
         this.filme.titulo == "" ||
         this.filme.descricao == null ||

@@ -11,5 +11,3 @@ Vue.use(VueSimpleAlert);
 Vue.config.productionTip = false;
 
 new Vue({ store, router, render: (h) => h(App) }).$mount("#app");
-
-Vue.prototype.$xxx="ok edu"

@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <span>&copy;<strong> Eduardo Prestes Testes</strong> 2021</span>
+    <span>&copy;<strong> Eduardo Prestes</strong> 2021</span>
   </footer>
 </template>
 

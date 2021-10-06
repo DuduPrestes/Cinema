@@ -56,15 +56,18 @@
 
         <table class="mb-3" v-show="sessao.id > 0">
           <tbody>
-            <tr>
+            <tr v-if="sessao.animacao">
               <td colspan="2">
                 <img style="height:100px" :src="sessao.animacao" />
               </td>
             </tr>
-            <tr>
+            <tr v-if="sessao.audio">
               <td colspan="2">
                 <audio controls>
-                  <source :src="sessao.audio" type="audio/mp3" />
+                  <source
+                    :src="sessao.audio"
+                    type="audio/mp3"
+                  />
                 </audio>
               </td>
             </tr>
@@ -94,7 +97,7 @@
             </tr>
             <tr>
               <td colspan="2">
-                <button class="btn btn-secondary" v-on:click="uploadImagem()">
+                <button class="btn btn-secondary" v-on:click="uploadArquivos()">
                   Salvar arquivos
                 </button>
               </td>
@@ -116,13 +119,13 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col" style="width: 10%">Data</th>
-            <th scope="col" style="width: 10%">Hora início</th>
-            <th scope="col" style="width: 10%">Hora fim</th>
+            <th scope="col" style="width: 8%">Data</th>
+            <th scope="col" style="width: 8%">Hora início</th>
+            <th scope="col" style="width: 8%">Hora fim</th>
             <th scope="col" style="width: 30%">Filme</th>
-            <th scope="col" style="width: 15%">Valor ingresso</th>
-            <th scope="col" style="width: 15%">Sala</th>
-            <th scope="col" style="width: 10%">Operações</th>
+            <th scope="col" style="width: 13%">Valor ingresso</th>
+            <th scope="col" style="width: 13%">Sala</th>
+            <th scope="col" style="width: 20%">Operações</th>
           </tr>
         </thead>
         <tbody>
@@ -135,7 +138,7 @@
               {{ moedaBrasileira(sessao.valorIngresso) }}
             </td>
             <td :title="sessao.sala">{{ sessao.sala }}</td>
-            <td>
+            <td style="overflow: visible">
               <i
                 class="fa fa-edit"
                 title="Editar sessão"
@@ -187,9 +190,8 @@ export default {
     preparaAudio() {
       this.audio = this.$refs.audio.files[0];
       this.sessao.audio = URL.createObjectURL(this.audio);
-      alert("mudou");
     },
-    uploadImagem() {
+    uploadArquivos() {
       let formData = new FormData();
       formData.append("animacao", this.animacao);
       formData.append("audio", this.audio);
@@ -222,9 +224,12 @@ export default {
         this.sessao.valorIngresso == null ||
         this.sessao.valorIngresso == "" ||
         this.sessao.idFilme == null ||
-        this.sessao.idSala == null
-      )
+        this.sessao.idFilme == "" ||
+        this.sessao.idSala == null ||
+        this.sessao.idSala == ""
+      ) {
         return false;
+      }
 
       return true;
     },
