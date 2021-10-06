@@ -119,10 +119,10 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col" style="width: 8%">Data</th>
-            <th scope="col" style="width: 8%">Hora início</th>
+            <th scope="col" style="width: 10%">Data</th>
+            <th scope="col" style="width: 9%">Hora início</th>
             <th scope="col" style="width: 8%">Hora fim</th>
-            <th scope="col" style="width: 30%">Filme</th>
+            <th scope="col" style="width: 27%">Filme</th>
             <th scope="col" style="width: 13%">Valor ingresso</th>
             <th scope="col" style="width: 13%">Sala</th>
             <th scope="col" style="width: 20%">Operações</th>
